@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>∞ JULIA+</title>
+  <title>Netflix</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0d0d0d">
 </head>
 <body>
 
   <header class="navbar">
-    <div class="logo">∞ JULIA+</div>
+    <div class="logo">
+      <img src="assets/logo1.png" alt="∞ JULIA+">
+    </div>
   </header>
 
   <section class="hero" id="hero">
@@ -22,17 +26,45 @@
 
   <main>
     <section id="tela-lista">
-      <h2>Episódios</h2>
+      <div class="cabecalho-lista">
+        <h2>Episódios</h2>
+        <button id="botao-novo">+ Novo episódio</button>
+      </div>
       <div class="episodios" id="lista-episodios">
         <!-- Os cards de episódio serão inseridos aqui pelo JavaScript -->
       </div>
     </section>
 
     <section id="tela-detalhe" class="oculto">
-      <button id="botao-voltar">&larr; Voltar</button>
+      <button class="botao-voltar" data-voltar>&larr; Voltar</button>
+      <div class="detalhe-imagem" id="detalhe-imagem"></div>
       <h2 id="detalhe-titulo"></h2>
       <p id="detalhe-data"></p>
       <p id="detalhe-descricao"></p>
+      <div class="acoes-detalhe">
+        <button id="botao-excluir">Excluir episódio</button>
+      </div>
+    </section>
+
+    <section id="tela-form" class="oculto">
+      <button class="botao-voltar" data-voltar>&larr; Voltar</button>
+      <h2>Novo episódio</h2>
+      <form id="form-episodio">
+        <label for="campo-titulo">Título</label>
+        <input type="text" id="campo-titulo" required>
+
+        <label for="campo-data">Data</label>
+        <input type="date" id="campo-data" required>
+
+        <label for="campo-descricao">Descrição</label>
+        <textarea id="campo-descricao" rows="4" required></textarea>
+
+        <label for="campo-foto">Foto</label>
+        <input type="file" id="campo-foto" accept="image/*">
+        <img id="preview-foto" class="oculto" alt="Pré-visualização da foto">
+
+        <button type="submit">Salvar episódio</button>
+      </form>
     </section>
   </main>
 
