@@ -1,0 +1,191 @@
+/* Reset básico: faz padding e border não aumentarem o tamanho total do elemento */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #0d0d0d;
+  color: #f2f2f2;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Barra de navegação fixa no topo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 32px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+  z-index: 10;
+}
+
+.logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #e50914;
+}
+
+/* Banner de destaque */
+.hero {
+  height: 60vh;
+  min-height: 340px;
+  display: flex;
+  align-items: flex-end;
+  padding: 32px;
+  background: linear-gradient(135deg, #3a0a0a, #0d0d0d 70%);
+}
+
+.hero-content {
+  max-width: 500px;
+}
+
+.hero-content h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.hero-content p {
+  color: #d1d1d1;
+  margin-bottom: 20px;
+}
+
+#hero-botao {
+  background-color: #f2f2f2;
+  color: #0d0d0d;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#hero-botao:hover {
+  background-color: #cccccc;
+}
+
+main {
+  padding: 24px 32px;
+}
+
+section h2 {
+  font-size: 1.3rem;
+  margin-bottom: 16px;
+  color: #f2f2f2;
+}
+
+.episodios {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+/* Cards em formato "pôster" */
+article {
+  position: relative;
+  flex: 1 1 160px;
+  max-width: 200px;
+  aspect-ratio: 2 / 3;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: flex-end;
+}
+
+article:hover {
+  transform: scale(1.06);
+}
+
+/* Cada pôster recebe um degradê de cor diferente, dando variedade visual
+   enquanto não temos fotos reais. Quando houver fotos, isso pode virar
+   background-image no lugar do gradient. */
+article:nth-child(3n+1) { background: linear-gradient(160deg, #4a0d0d, #1a1a1a); }
+article:nth-child(3n+2) { background: linear-gradient(160deg, #0d2b4a, #1a1a1a); }
+article:nth-child(3n+3) { background: linear-gradient(160deg, #3a0d4a, #1a1a1a); }
+
+article::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60%;
+  background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+}
+
+article h3 {
+  position: relative;
+  font-size: 0.95rem;
+  padding: 12px;
+}
+
+article p {
+  display: none; /* a descrição não aparece mais no card, só no detalhe */
+}
+
+/* Tela de detalhe */
+.oculto {
+  display: none;
+}
+
+#tela-detalhe {
+  max-width: 600px;
+}
+
+#botao-voltar {
+  background: none;
+  border: none;
+  color: #b3b3b3;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-bottom: 16px;
+}
+
+#botao-voltar:hover {
+  color: #f2f2f2;
+}
+
+#detalhe-titulo {
+  color: #e50914;
+  margin-bottom: 8px;
+}
+
+#detalhe-data {
+  color: #808080;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+#detalhe-descricao {
+  color: #f2f2f2;
+  line-height: 1.6;
+}
+
+/* Responsividade para celular */
+@media (max-width: 480px) {
+  .navbar, main {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .hero {
+    height: 50vh;
+    padding: 20px;
+  }
+
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+
+  article {
+    flex: 1 1 42%;
+    max-width: none;
+  }
+}
